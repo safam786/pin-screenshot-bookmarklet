@@ -107,7 +107,6 @@ function createSimpleDialog(question, successHandler) {
 
 function createWebsitePin(linkURL, imageURL, description) {
   //TODO: optimize title/description 
-    alert(description); 
     var url = "http://pinterest.com/pin/create/button/" 
       + "?url=" + encodeURIComponent(linkURL) 
       + "&media=" + encodeURIComponent(imageURL) 

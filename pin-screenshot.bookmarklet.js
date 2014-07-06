@@ -3,7 +3,6 @@ function initMyBookmarklet() {
     if (imageURL) { 
         imageURL = imageURL.substring(imageURL.indexOf('c'));
         imageURL = 'https://dl.dropboxusercontent.' + imageURL;
-        alert(document.title); 
       createWebsitePin(window.location.href, imageURL, document.title);
     }
   });

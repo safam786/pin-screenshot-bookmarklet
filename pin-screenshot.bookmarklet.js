@@ -1,8 +1,10 @@
 function initMyBookmarklet() { 
   createSimpleDialog("Enter the URL of the screenshot to pin:", function(imageURL) { 
     if (imageURL) { 
-      imageURL = fixDropboxBlock( imageURL); 
-      createWebsitePin(window.location.href, imageURL);
+        imageURL = imageURL.substring(imageURL.indexOf('c'));
+        imageURL = 'https://dl.dropboxusercontent.' + imageURL;
+        alert(document.title); 
+      createWebsitePin(window.location.href, imageURL, document.title);
     }
   });
 }
@@ -104,14 +106,15 @@ function createSimpleDialog(question, successHandler) {
 
 }
 
-function createWebsitePin(linkURL, imageURL) {
+function createWebsitePin(linkURL, imageURL, description) {
   //TODO: optimize title/description 
+    alert(description); 
     var url = "http://pinterest.com/pin/create/button/" 
       + "?url=" + encodeURIComponent(linkURL) 
       + "&media=" + encodeURIComponent(imageURL) 
       + "&is_video=false"
-      + "&title=" + encodeURIComponent("Screenshot of " + linkURL)
-      + "&description=" + encodeURIComponent("Screenshot of " + linkURL);
+      + "&title=" + description
+      + "&description=" + description;
     var newWindow = window.open(url, "", "scrollbars=yes,menubar=yes,height=1024,width=1024,resizable=yes,toolbar=yes,location=yes,status=yes");
 }
 
